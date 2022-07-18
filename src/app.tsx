@@ -1,9 +1,11 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Provider } from 'react-redux';
 
 import { ROUTES } from './constants';
 import Login from './pages/login';
 import Main from './pages/main';
+import { store } from './store';
 
 const App: React.FC = () => {
     return (
@@ -18,9 +20,11 @@ const App: React.FC = () => {
 
 const AppRoot: React.FC = () => {
     return (
-        <BrowserRouter>
-            <App />
-        </BrowserRouter>
+        <Provider store={store}>
+            <BrowserRouter>
+                <App />
+            </BrowserRouter>
+        </Provider>
     );
 };
 
