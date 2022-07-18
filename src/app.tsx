@@ -1,11 +1,31 @@
 import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Provider } from 'react-redux';
+
+import { ROUTES } from './constants';
+import Login from './pages/login';
+import Main from './pages/main';
+import { store } from './store';
 
 const App: React.FC = () => {
     return (
         <div>
-            <h1>Hello World</h1>
+            <Routes>
+                <Route path={ROUTES.LOGIN} element={<Login />} />
+                <Route path={ROUTES.MAIN} element={<Main />} />
+            </Routes>
         </div>
     );
 };
 
-export default App;
+const AppRoot: React.FC = () => {
+    return (
+        <Provider store={store}>
+            <BrowserRouter>
+                <App />
+            </BrowserRouter>
+        </Provider>
+    );
+};
+
+export default AppRoot;
