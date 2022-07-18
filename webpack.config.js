@@ -12,7 +12,7 @@ module.exports = {
             {
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
-                use: ["babel-loader"],
+                use: ['babel-loader'],
             },
             {
                 test: /\.(ts|tsx)$/,
@@ -38,7 +38,7 @@ module.exports = {
                     { loader: 'sass-loader', options: { sourceMap: true } },
                 ],
             },
-        ]
+        ],
     },
     devtool: 'source-map',
     plugins: [
@@ -47,4 +47,8 @@ module.exports = {
         }),
         new MiniCssExtractPlugin(),
     ],
+    devServer: {
+        port: 3000,
+        historyApiFallback: true,
+    },
 };
