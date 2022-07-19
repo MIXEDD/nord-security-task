@@ -1,0 +1,69 @@
+@import '../../variables.scss';
+
+.mt1 {
+    margin-top: $gutter;
+}
+
+.mt2 {
+  margin-top: $gutter * 1.5
+}
+
+.mr1 {
+  margin-right: $gutter
+}
+
+.mr2 {
+  margin-right: $gutter * 1.5
+}
+
+.mb1 {
+  margin-bottom: $gutter
+}
+
+.mb2 {
+  margin-bottom: $gutter * 1.5
+}
+
+.ml1 {
+  margin-left: $gutter
+}
+
+.ml2 {
+  margin-left: $gutter * 1.5
+}
+
+.container {
+  display: flex;
+}
+
+.row {
+  flex-direction: row;
+}
+
+.column {
+  flex-direction: column;
+}
+
+.justifyFlexStart {
+  justify-content: flex-start;
+}
+
+.justifyFlexEnd {
+  justify-content: flex-end;
+}
+
+.justifyCenter {
+  justify-content: center;
+}
+
+.alignFlexStart {
+  align-items: flex-start;
+}
+
+.alignFlexEnd {
+  align-items: flex-end;
+}
+
+.alignFlexCenter {
+  align-items: center;
+}

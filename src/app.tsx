@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
 import { ROUTES } from './constants';
-import Login from './pages/login';
+import Login from './pages/login/login';
 import Main from './pages/main';
 import { store } from './store';
 
