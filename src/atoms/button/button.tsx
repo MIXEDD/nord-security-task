@@ -1,6 +1,6 @@
 import classnames from 'classnames';
 import React from 'react';
-import styles from './styles.scss';
+import styles from './button.scss';
 
 export enum ButtonType {
     Primary = 'PRIMARY',
