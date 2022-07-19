@@ -2,7 +2,7 @@ import React from 'react';
 
 import Button from '../atoms/button/button';
 import InputField from '../atoms/input-field/input-field';
-import Grid from '../atoms/grid/grid';
+import Spacer from '../atoms/spacer/spacer';
 
 const Login: React.FC = () => {
     const onChangeUsername = (value: string) => {
@@ -15,12 +15,12 @@ const Login: React.FC = () => {
 
     return (
         <div>
-            <Grid>
+            <Spacer>
                 <InputField onChangeInput={onChangeUsername} name="username" label="Username" />
-            </Grid>
-            <Grid>
+            </Spacer>
+            <Spacer>
                 <InputField onChangeInput={onChangePassword} name="password" label="Password" />
-            </Grid>
+            </Spacer>
             <Button text="login" onClick={() => {}} />
         </div>
     );

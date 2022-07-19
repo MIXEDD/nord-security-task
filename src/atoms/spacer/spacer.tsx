@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import classnames from 'classnames';
 
-import styles from './grid.scss';
+import styles from './spcaer.scss';
 
 export enum MarginTop {
     Mt1 = 'mt1',
@@ -31,7 +31,7 @@ interface Props {
     ml?: MarginLeft;
 }
 
-const Grid: React.FC<Props> = (props) => {
+const Spacer: React.FC<Props> = (props) => {
     const {
         children,
         mt = MarginTop.Mt1,
@@ -45,4 +45,4 @@ const Grid: React.FC<Props> = (props) => {
     );
 };
 
-export default Grid;
+export default Spacer;
