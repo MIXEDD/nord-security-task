@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Button from '../../atoms/button/button';
-import InputField from '../../atoms/input-field/input-field';
+import InputField, { Type } from '../../atoms/input-field/input-field';
 import Grid, { AlignItems, FlexDirection } from '../../atoms/grid/grid';
 import Typography, { ElementType, TextAlign } from '../../atoms/typography/typography';
 
@@ -28,7 +28,12 @@ const Login: React.FC = () => {
                     <InputField onChangeInput={onChangeUsername} name="username" label="Username" />
                 </Grid>
                 <Grid direction={FlexDirection.Column}>
-                    <InputField onChangeInput={onChangePassword} name="password" label="Password" />
+                    <InputField
+                        onChangeInput={onChangePassword}
+                        name="password"
+                        label="Password"
+                        type={Type.Password}
+                    />
                 </Grid>
                 <Grid direction={FlexDirection.Column}>
                     <Button text="login" onClick={() => {}} />
