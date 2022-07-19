@@ -21,7 +21,7 @@ const getButtonTypeStyles = (buttonType: ButtonType) => {
     return null;
 };
 
-const Button: React.FC<Props> = (props) => {
+const Button: React.FC<Props> = React.memo((props) => {
     const { text, onClick, disabled, buttonType = ButtonType.Primary } = props;
 
     return (
@@ -37,6 +37,6 @@ const Button: React.FC<Props> = (props) => {
             {text}
         </button>
     );
-};
+});
 
 export default Button;
