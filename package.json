@@ -19,6 +19,7 @@
   "homepage": "https://github.com/MIXEDD/nord-security-task#readme",
   "devDependencies": {
     "@babel/preset-typescript": "^7.18.6",
+    "@types/js-cookie": "^3.0.2",
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
     "css-loader": "^6.7.1",
