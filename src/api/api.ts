@@ -1,6 +1,6 @@
 import axios, { AxiosPromise } from 'axios';
 
-import { AuthModel } from './interfaces';
+import { AuthModel, ServerListModel } from './interfaces';
 import { getToken } from '../utils/cookieUtils';
 
 axios.interceptors.request.use(
@@ -12,7 +12,7 @@ axios.interceptors.request.use(
         return config;
     },
     (error) => {
-        Promise.reject(error);
+        return Promise.reject(error);
     },
 );
 
@@ -22,5 +22,5 @@ export const Api = {
             username,
             password,
         }),
-    getServerList: () => axios.get('v1/servers'),
+    getServerList: (): AxiosPromise<ServerListModel[]> => axios.get('v1/servers'),
 };

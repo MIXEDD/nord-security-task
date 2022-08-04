@@ -1,14 +1,14 @@
 import React from 'react';
-import { useTable } from 'react-table';
+import { Column, useTable } from 'react-table';
 
 import './table.scss';
 
-interface Props {
-    columns: any[];
-    data: any[];
+interface Props<T> {
+    columns: Column<Record<string, string>>[];
+    data: T[];
 }
 
-const Table: React.FC<Props> = (props) => {
+const Table = <T extends {}>(props: Props<T>) => {
     const { columns, data } = props;
 
     const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = useTable({
@@ -28,7 +28,7 @@ const Table: React.FC<Props> = (props) => {
                 ))}
             </thead>
             <tbody {...getTableBodyProps()}>
-                {rows.map((row, i) => {
+                {rows.map((row) => {
                     prepareRow(row);
                     return (
                         <tr {...row.getRowProps()}>
