@@ -10,13 +10,11 @@ import PageNotFound from './pages/pageNotFound/pageNotFound';
 
 const App: React.FC = () => {
     return (
-        <div>
-            <Routes>
-                <Route path={ROUTES.LOGIN} element={<Login />} />
-                <Route path={ROUTES.MAIN} element={<Main />} />
-                <Route path={ROUTES.ALL_PATHS} element={<PageNotFound />} />
-            </Routes>
-        </div>
+        <Routes>
+            <Route path={ROUTES.LOGIN} element={<Login />} />
+            <Route path={ROUTES.MAIN} element={<Main />} />
+            <Route path={ROUTES.ALL_PATHS} element={<PageNotFound />} />
+        </Routes>
     );
 };
 
