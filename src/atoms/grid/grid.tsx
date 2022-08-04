@@ -52,25 +52,16 @@ interface Props {
 }
 
 const Grid: React.FC<Props> = (props) => {
-    const {
-        children,
-        mt = MarginTop.Mt1,
-        mr = MarginRight.Mr1,
-        mb = MarginBottom.Mb1,
-        ml = MarginLeft.Ml1,
-        direction,
-        justifyContent,
-        alignItems,
-    } = props;
+    const { children, mt, mr, mb, ml, direction, justifyContent, alignItems } = props;
 
     return (
         <div
             className={classnames(
                 styles.container,
-                styles[mt],
-                styles[mr],
-                styles[mb],
-                styles[ml],
+                mt && styles[mt],
+                mr && styles[mr],
+                mb && styles[mb],
+                ml && styles[ml],
                 direction && styles[direction],
                 justifyContent && styles[justifyContent],
                 alignItems && styles[alignItems],
