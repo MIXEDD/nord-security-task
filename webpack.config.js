@@ -50,5 +50,12 @@ module.exports = {
     devServer: {
         port: 3000,
         historyApiFallback: true,
+        allowedHosts: 'all',
+        proxy: {
+            '/v1': {
+                target: ' https://playground.tesonet.lt',
+                changeOrigin: true,
+            },
+        },
     },
 };
