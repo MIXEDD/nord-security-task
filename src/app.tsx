@@ -6,6 +6,7 @@ import { ROUTES } from './constants';
 import Login from './pages/login/login';
 import Main from './pages/main';
 import { store } from './store';
+import PageNotFound from './pages/pageNotFound/pageNotFound';
 
 const App: React.FC = () => {
     return (
@@ -13,6 +14,7 @@ const App: React.FC = () => {
             <Routes>
                 <Route path={ROUTES.LOGIN} element={<Login />} />
                 <Route path={ROUTES.MAIN} element={<Main />} />
+                <Route path={ROUTES.ALL_PATHS} element={<PageNotFound />} />
             </Routes>
         </div>
     );

@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Cookie from 'js-cookie';
+import { useNavigate } from 'react-router';
 
 import Button from '../../atoms/button/button';
 import InputField, { Type } from '../../atoms/input-field/input-field';
@@ -7,14 +8,22 @@ import Grid, { AlignItems, FlexDirection, MarginBottom } from '../../atoms/grid/
 import Typography, { Color, ElementType, TextAlign } from '../../atoms/typography/typography';
 import { Api } from '../../api/api';
 import { AUTH_COOKIE_NAME } from '../../api/constants';
+import { ROUTES } from '../../constants';
 
 import styles from './login.scss';
 
 const Login: React.FC = () => {
+    const navigate = useNavigate();
     const [userName, setUserName] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
     const [error, setError] = useState<string>();
+
+    useEffect(() => {
+        if (Cookie.get(AUTH_COOKIE_NAME)) {
+            navigate(ROUTES.MAIN);
+        }
+    }, []);
 
     const onChangeUsername = (value: string) => {
         setUserName(value);
@@ -29,6 +38,7 @@ const Login: React.FC = () => {
         Api.auth(userName, password)
             .then((res) => {
                 Cookie.set(AUTH_COOKIE_NAME, res.data.token);
+                navigate(ROUTES.MAIN);
             })
             .catch((error) => setError(error.response.data.message))
             .finally(() => setIsSubmitting(false));
