@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 
 import { ROUTES } from './constants';
 import Login from './pages/login/login';
-import Main from './pages/main';
+import Main from './pages/main/main';
 import { store } from './store';
 import PageNotFound from './pages/pageNotFound/pageNotFound';
 import ProtectedRoute from './protectedRoute/protectedRoute';
