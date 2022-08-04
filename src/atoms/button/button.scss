@@ -1,3 +1,5 @@
+@import '../../variables';
+
 .button {
   border-radius: 3px;
   padding: 10px 15px;
@@ -8,7 +10,7 @@
 }
 
 .primary {
-  background-color: #e7e7e7;
+  background-color: $background;
   color: black;
 }
 
