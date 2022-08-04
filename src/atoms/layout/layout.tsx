@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import classnames from 'classnames';
 
-import styles from './grid.scss';
+import styles from './layout.scss';
 
 export enum MarginTop {
     Mt1 = 'mt1',
@@ -51,7 +51,7 @@ interface Props {
     alignItems?: AlignItems;
 }
 
-const Grid: React.FC<Props> = (props) => {
+const Layout: React.FC<Props> = (props) => {
     const { children, mt, mr, mb, ml, direction, justifyContent, alignItems } = props;
 
     return (
@@ -72,4 +72,4 @@ const Grid: React.FC<Props> = (props) => {
     );
 };
 
-export default Grid;
+export default Layout;

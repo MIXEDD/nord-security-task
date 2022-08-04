@@ -1,12 +1,12 @@
 import React from 'react';
 import Typography, { ElementType } from '../../atoms/typography/typography';
-import Grid, { JustifyContent } from '../../atoms/grid/grid';
+import Layout, { JustifyContent } from '../../atoms/layout/layout';
 
 const PageNotFound: React.FC = () => {
     return (
-        <Grid justifyContent={JustifyContent.Center}>
+        <Layout justifyContent={JustifyContent.Center}>
             <Typography text="Page not found" elementType={ElementType.H1} />
-        </Grid>
+        </Layout>
     );
 };
 
