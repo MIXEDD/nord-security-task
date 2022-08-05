@@ -1,5 +1,5 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import { tableReducer } from './table/reducer';
+import { tableReducer, TableState } from './table/reducer';
 
 const rootReducer = combineReducers({
     table: tableReducer,
@@ -8,3 +8,7 @@ const rootReducer = combineReducers({
 export const store = configureStore({
     reducer: rootReducer,
 });
+
+export interface RootState {
+    table: TableState;
+}
