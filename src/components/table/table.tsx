@@ -1,10 +1,11 @@
 import React, { useEffect, useMemo } from 'react';
 import { Column, useFilters, useSortBy, useTable } from 'react-table';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import SortFilter, { SortOrder } from '../sortFilter/sortFilter';
 import { onInitTable } from '../../store/table/actions';
 import { getColumnsWithFilters } from '../../utils/tableUtils';
+import { RootState } from '../../store';
 
 import './table.scss';
 
@@ -18,10 +19,13 @@ const Table = <T extends {}>(props: Props<T>) => {
     const { columns, data, name } = props;
 
     const dispatch = useDispatch();
+    const tableState = useSelector((state: RootState) => state.table.tableState);
 
     useEffect(() => {
-        dispatch(onInitTable(columns, data, name));
-    }, []);
+        if (!tableState?.find((table) => table.name === name)) {
+            dispatch(onInitTable<T>(columns, data, name));
+        }
+    }, [tableState]);
 
     const columnsWithFilters = useMemo(() => getColumnsWithFilters(columns), [columns]);
 

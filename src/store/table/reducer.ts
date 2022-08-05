@@ -1,20 +1,22 @@
 import { INIT_TABLE } from './constants';
 import { Action, OnInitTableAction } from './types';
 
-interface State {
-    table: { columns: any; data: any; name: string }[];
+export interface TableState {
+    tableState: { columns: any; data: any; name: string }[];
 }
 
-const initialState: State = {
-    table: [],
+const initialState: TableState = {
+    tableState: [],
 };
 
-export function tableReducer(state: State = initialState, action: Action) {
+export function tableReducer(state: TableState = initialState, action: Action) {
     switch (action.type) {
         case INIT_TABLE: {
             const payload = (action as OnInitTableAction).payload;
 
-            return [...state.table, payload];
+            return {
+                tableState: [...state.tableState, payload],
+            };
         }
         default:
             return state;

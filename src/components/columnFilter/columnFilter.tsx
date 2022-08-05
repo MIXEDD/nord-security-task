@@ -3,7 +3,7 @@ import React from 'react';
 import styles from './columnFilter.scss';
 
 interface Props {
-    column: any;
+    column: { filterValue: string; setFilter: (value: string) => void };
 }
 
 const ColumnFilter: React.FC<Props> = (props) => {
