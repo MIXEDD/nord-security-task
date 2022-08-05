@@ -1,16 +1,15 @@
 import React from 'react';
-import Cookies from 'js-cookie';
-import { Navigate, useLocation } from 'react-router';
+import { Navigate } from 'react-router';
 
-import { AUTH_COOKIE_NAME } from '../api/constants';
 import { ROUTES } from '../constants';
+import { getToken } from '../utils/cookieUtils';
 
 interface Props {
     children: JSX.Element;
 }
 
 const ProtectedRoute: React.FC<Props> = (props) => {
-    const isAuthenticated = Cookies.get(AUTH_COOKIE_NAME);
+    const isAuthenticated = getToken();
 
     if (!isAuthenticated) {
         return <Navigate to={ROUTES.LOGIN} />;
