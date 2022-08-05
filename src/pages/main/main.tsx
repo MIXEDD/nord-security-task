@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Table from '../../components/table/table';
 import { Api } from '../../api/api';
@@ -18,6 +18,8 @@ const COLUMNS = [
     },
 ];
 
+const TABLE_NAME = 'MAIN_TABLE';
+
 const Main: React.FC = () => {
     const [fetchedData, setFetchedData] = useState<ServerListModel[]>([]);
 
@@ -27,7 +29,11 @@ const Main: React.FC = () => {
         });
     }, []);
 
-    return <Table columns={COLUMNS} data={fetchedData} />;
+    if (!fetchedData.length) {
+        return null;
+    }
+
+    return <Table columns={COLUMNS} data={fetchedData} name={TABLE_NAME} />;
 };
 
 export default Main;

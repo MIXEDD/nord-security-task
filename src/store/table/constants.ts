@@ -1,2 +1,2 @@
 const NAME = 'TABLE';
-export const TEST_TABLE = `${NAME}_TEST`;
+export const INIT_TABLE = `${NAME}_TEST`;
