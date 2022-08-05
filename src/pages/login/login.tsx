@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import Cookie from 'js-cookie';
 import { useNavigate } from 'react-router';
 
-import Button from '../../atoms/button/button';
-import InputField, { Type } from '../../atoms/input-field/input-field';
+import Button, { ButtonType } from '../../atoms/button/button';
+import InputField, { InputType } from '../../atoms/input-field/input-field';
 import Layout, { AlignItems, FlexDirection, MarginBottom } from '../../atoms/layout/layout';
 import Typography, { Color, ElementType, TextAlign } from '../../atoms/typography/typography';
 import { Api } from '../../api/api';
@@ -46,7 +46,7 @@ const Login: React.FC = () => {
 
     return (
         <Layout direction={FlexDirection.Column} alignItems={AlignItems.Center}>
-            <div className={styles.login}>
+            <form className={styles.login}>
                 <Typography
                     elementType={ElementType.H1}
                     textAlign={TextAlign.Center}
@@ -60,7 +60,7 @@ const Login: React.FC = () => {
                         onChangeInput={onChangePassword}
                         name="password"
                         label="Password"
-                        type={Type.Password}
+                        type={InputType.Password}
                     />
                 </Layout>
                 {error && (
@@ -69,9 +69,14 @@ const Login: React.FC = () => {
                     </Layout>
                 )}
                 <Layout direction={FlexDirection.Column}>
-                    <Button text="login" onClick={onClick} disabled={isSubmitting} />
+                    <Button
+                        type={ButtonType.Submit}
+                        text="login"
+                        onClick={onClick}
+                        disabled={isSubmitting}
+                    />
                 </Layout>
-            </div>
+            </form>
         </Layout>
     );
 };
