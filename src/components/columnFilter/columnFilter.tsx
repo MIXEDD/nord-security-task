@@ -15,7 +15,14 @@ const ColumnFilter: React.FC<Props> = (props) => {
         setFilter(event.target.value);
     };
 
-    return <input className={styles.input} value={filterValue || ''} onChange={onChange} />;
+    return (
+        <input
+            className={styles.input}
+            value={filterValue || ''}
+            onClick={(event) => event.stopPropagation()}
+            onChange={onChange}
+        />
+    );
 };
 
 export default ColumnFilter;

@@ -9,12 +9,10 @@ const COLUMNS = [
     {
         Header: 'Name',
         accessor: 'name',
-        Filter: ColumnFilter,
     },
     {
         Header: 'Distance',
         accessor: 'distance',
-        Filter: ColumnFilter,
     },
 ];
 
