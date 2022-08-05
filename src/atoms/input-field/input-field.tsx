@@ -11,10 +11,11 @@ interface Props {
     label: string;
     onChangeInput: (value: string) => void;
     type?: Type;
+    dataQa?: string;
 }
 
 const InputField: React.FC<Props> = React.memo((props) => {
-    const { name, label, onChangeInput, type = Type.Text } = props;
+    const { name, label, onChangeInput, type = Type.Text, dataQa } = props;
 
     const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         onChangeInput(event.target.value);
@@ -23,7 +24,13 @@ const InputField: React.FC<Props> = React.memo((props) => {
     return (
         <div className={styles.container}>
             <label htmlFor={name}>{label}</label>
-            <input className={styles.inputField} id={name} type={type} onChange={onChange} />
+            <input
+                data-qa={dataQa}
+                className={styles.inputField}
+                id={name}
+                type={type}
+                onChange={onChange}
+            />
         </div>
     );
 });

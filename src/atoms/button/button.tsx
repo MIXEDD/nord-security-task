@@ -11,6 +11,7 @@ interface Props {
     onClick: () => void;
     disabled?: boolean;
     buttonType?: ButtonType;
+    dataQa?: string;
 }
 
 const getButtonTypeStyles = (buttonType: ButtonType) => {
@@ -22,7 +23,7 @@ const getButtonTypeStyles = (buttonType: ButtonType) => {
 };
 
 const Button: React.FC<Props> = React.memo((props) => {
-    const { text, onClick, disabled, buttonType = ButtonType.Primary } = props;
+    const { text, onClick, disabled, buttonType = ButtonType.Primary, dataQa } = props;
 
     return (
         <button
@@ -33,6 +34,7 @@ const Button: React.FC<Props> = React.memo((props) => {
             )}
             onClick={onClick}
             disabled={disabled}
+            data-qa={dataQa}
         >
             {text}
         </button>
