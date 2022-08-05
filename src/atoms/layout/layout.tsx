@@ -49,10 +49,11 @@ interface Props {
     direction?: FlexDirection;
     justifyContent?: JustifyContent;
     alignItems?: AlignItems;
+    dataQa?: string;
 }
 
 const Layout: React.FC<Props> = (props) => {
-    const { children, mt, mr, mb, ml, direction, justifyContent, alignItems } = props;
+    const { children, mt, mr, mb, ml, direction, justifyContent, alignItems, dataQa } = props;
 
     return (
         <div
@@ -66,6 +67,7 @@ const Layout: React.FC<Props> = (props) => {
                 justifyContent && styles[justifyContent],
                 alignItems && styles[alignItems],
             )}
+            data-qa={dataQa}
         >
             {children}
         </div>
