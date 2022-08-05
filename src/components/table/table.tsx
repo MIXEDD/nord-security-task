@@ -1,16 +1,26 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Column, useFilters, useSortBy, useTable } from 'react-table';
+import { useDispatch } from 'react-redux';
+
 import SortFilter, { SortOrder } from '../sortFilter/sortFilter';
+import { onInitTable } from '../../store/table/actions';
 
 import './table.scss';
 
 interface Props<T> {
     columns: Column<Record<string, unknown>>[];
     data: T[];
+    name: string;
 }
 
 const Table = <T extends {}>(props: Props<T>) => {
-    const { columns, data } = props;
+    const { columns, data, name } = props;
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(onInitTable(columns, data, name));
+    }, []);
 
     const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = useTable(
         {

@@ -1,17 +1,20 @@
-import { TEST_TABLE } from './constants';
+import { INIT_TABLE } from './constants';
+import { Action, OnInitTableAction } from './types';
 
 interface State {
-    test: string;
+    table: { columns: any; data: any; name: string }[];
 }
 
 const initialState: State = {
-    test: 'test',
+    table: [],
 };
 
-export function tableReducer(state: State = initialState, action: any) {
+export function tableReducer(state: State = initialState, action: Action) {
     switch (action.type) {
-        case TEST_TABLE: {
-            state.test = action.payload;
+        case INIT_TABLE: {
+            const payload = (action as OnInitTableAction).payload;
+
+            return [...state.table, payload];
         }
         default:
             return state;
