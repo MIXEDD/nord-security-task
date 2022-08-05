@@ -1,5 +1,6 @@
 import React from 'react';
-import { Column, useTable, useFilters } from 'react-table';
+import { Column, useFilters, useSortBy, useTable } from 'react-table';
+import SortFilter, { SortOrder } from '../sortFilter/sortFilter';
 
 import './table.scss';
 
@@ -17,6 +18,7 @@ const Table = <T extends {}>(props: Props<T>) => {
             data,
         },
         useFilters,
+        useSortBy,
     );
 
     return (
@@ -24,10 +26,17 @@ const Table = <T extends {}>(props: Props<T>) => {
             <thead>
                 {headerGroups.map((headerGroup) => (
                     <tr {...headerGroup.getHeaderGroupProps()}>
-                        {headerGroup.headers.map((column) => (
-                            <th {...column.getHeaderProps()}>
+                        {headerGroup.headers.map((column: any) => (
+                            <th {...column.getHeaderProps(column.getSortByToggleProps())}>
                                 {column.render('Header')}
-                                <div>{(column as any).canFilter && column.render('Filter')}</div>
+                                {column.canFilter && <div>{column.render('Filter')}</div>}
+                                {column.isSorted && (
+                                    <SortFilter
+                                        sortOrder={
+                                            column.isSortedDesc ? SortOrder.Desc : SortOrder.Asc
+                                        }
+                                    />
+                                )}
                             </th>
                         ))}
                     </tr>
