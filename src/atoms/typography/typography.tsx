@@ -24,20 +24,39 @@ interface Props {
     text: string;
     textAlign?: TextAlign;
     color?: Color;
+    dataQa?: string;
 }
 
 const Typography: React.FC<Props> = (props) => {
-    const { elementType = ElementType.Span, text, textAlign = TextAlign.Left, color } = props;
+    const {
+        elementType = ElementType.Span,
+        text,
+        textAlign = TextAlign.Left,
+        color,
+        dataQa,
+    } = props;
 
     if (elementType === ElementType.H1) {
-        return <h1 className={classNames(styles[textAlign], color && styles[color])}>{text}</h1>;
+        return (
+            <h1 data-qa={dataQa} className={classNames(styles[textAlign], color && styles[color])}>
+                {text}
+            </h1>
+        );
     }
 
     if (elementType === ElementType.H2) {
-        return <h2 className={classNames(styles[textAlign], color && styles[color])}>{text}</h2>;
+        return (
+            <h2 data-qa={dataQa} className={classNames(styles[textAlign], color && styles[color])}>
+                {text}
+            </h2>
+        );
     }
 
-    return <span className={classNames(styles[textAlign], color && styles[color])}>{text}</span>;
+    return (
+        <span data-qa={dataQa} className={classNames(styles[textAlign], color && styles[color])}>
+            {text}
+        </span>
+    );
 };
 
 export default Typography;
