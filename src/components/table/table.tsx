@@ -1,20 +1,23 @@
 import React from 'react';
-import { Column, useTable } from 'react-table';
+import { Column, useTable, useFilters } from 'react-table';
 
 import './table.scss';
 
 interface Props<T> {
-    columns: Column<Record<string, string>>[];
+    columns: Column<Record<string, unknown>>[];
     data: T[];
 }
 
 const Table = <T extends {}>(props: Props<T>) => {
     const { columns, data } = props;
 
-    const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = useTable({
-        columns,
-        data,
-    });
+    const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = useTable(
+        {
+            columns,
+            data,
+        },
+        useFilters,
+    );
 
     return (
         <table {...getTableProps()}>
@@ -22,7 +25,10 @@ const Table = <T extends {}>(props: Props<T>) => {
                 {headerGroups.map((headerGroup) => (
                     <tr {...headerGroup.getHeaderGroupProps()}>
                         {headerGroup.headers.map((column) => (
-                            <th {...column.getHeaderProps()}>{column.render('Header')}</th>
+                            <th {...column.getHeaderProps()}>
+                                {column.render('Header')}
+                                <div>{(column as any).canFilter && column.render('Filter')}</div>
+                            </th>
                         ))}
                     </tr>
                 ))}

@@ -3,6 +3,20 @@ import React, { useEffect, useMemo, useState } from 'react';
 import Table from '../../components/table/table';
 import { Api } from '../../api/api';
 import { ServerListModel } from '../../api/interfaces';
+import ColumnFilter from '../../components/columnFilter/columnFilter';
+
+const COLUMNS = [
+    {
+        Header: 'Name',
+        accessor: 'name',
+        Filter: ColumnFilter,
+    },
+    {
+        Header: 'Distance',
+        accessor: 'distance',
+        Filter: ColumnFilter,
+    },
+];
 
 const Main: React.FC = () => {
     const [fetchedData, setFetchedData] = useState<ServerListModel[]>([]);
@@ -13,21 +27,7 @@ const Main: React.FC = () => {
         });
     }, []);
 
-    const columns = useMemo(
-        () => [
-            {
-                Header: 'Name',
-                accessor: 'name',
-            },
-            {
-                Header: 'Distance',
-                accessor: 'distance',
-            },
-        ],
-        [],
-    );
-
-    return <Table columns={columns} data={fetchedData} />;
+    return <Table columns={COLUMNS} data={fetchedData} />;
 };
 
 export default Main;

@@ -16,8 +16,8 @@ interface Props {
 const InputField: React.FC<Props> = React.memo((props) => {
     const { name, label, onChangeInput, type = Type.Text } = props;
 
-    const onChange = (event: React.FormEvent<HTMLInputElement>) => {
-        onChangeInput(event.currentTarget.value);
+    const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        onChangeInput(event.target.value);
     };
 
     return (
