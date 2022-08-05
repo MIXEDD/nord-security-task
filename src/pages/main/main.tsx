@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import Table from '../../components/table/table';
 import { Api } from '../../api/api';
 import { ServerListModel } from '../../api/interfaces';
-import ColumnFilter from '../../components/columnFilter/columnFilter';
 
 const COLUMNS = [
     {
